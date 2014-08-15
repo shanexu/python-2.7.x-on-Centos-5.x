@@ -48,6 +48,7 @@ python_info() {
   if [ "$usescriptio" == "true" ]; then
     STATUS_SCRIPTIO=`curl -L -m 5 --output /dev/null --silent --head --write-out '%{http_code}\n' script.io/disks/python/python2/version`
     if [ "$STATUS_SCRIPTIO" == "200" ]; then
+      python2vers=`curl -L -m 5 --silent script.io/disks/python/python2/version`
       python2vers=${python2vers:1:${#python2vers}-2}
       python2url=`curl -L -m 5 --silent script.io/disks/python/python2/url`
       python2url=${python2url:1:${#python2url}-2}
