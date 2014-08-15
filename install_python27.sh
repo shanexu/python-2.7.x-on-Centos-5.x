@@ -48,10 +48,13 @@ python_info() {
   if [ "$usescriptio" == "true" ]; then
     STATUS_SCRIPTIO=`curl -L -m 5 --output /dev/null --silent --head --write-out '%{http_code}\n' script.io/disks/python/python2/version`
     if [ "$STATUS_SCRIPTIO" == "200" ]; then
-      python2vers=`curl -L -m 5 --silent script.io/disks/python/python2/version`
+      python2vers=${python2vers:1:${#python2vers}-2}
       python2url=`curl -L -m 5 --silent script.io/disks/python/python2/url`
+      python2url=${python2url:1:${#python2url}-2}
       setuptoolsvers=`curl -L -m 5 --silent script.io/disks/setuptools/2.7/version`
+      setuptoolsvers=${setuptoolsvers:1:${#setuptoolsvers}-2}
       setuptoolsurl=`curl -L -m 5 --silent script.io/disks/setuptools/2.7/url`
+      setuptoolsurl=${setuptoolsurl:1:${#setuptoolsurl}-2}
     else
       python2vers=$fallback_vers
       python2url=$fallback_url
